@@ -3,4 +3,4 @@ deco
 
 Web development for personal websites.
 
-Install django 1.3.1.
+Please Install django 1.3.1.
