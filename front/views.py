@@ -14,6 +14,7 @@ def item_page(request,item):
     #sections = Section.objects.all().order_by('sortnum')
     #return HttpResponse("item "+item)#render_to_response('index.html', {"sections": sections})
     db_item = Item.objects.get(title=item.replace('_',' '))
+    db_item = db_item.cast()
     return render_to_response('item.html', {'title': db_item.title,'rendered': db_item.render()})
 
 def tage_page(request):
