@@ -5,4 +5,17 @@ from deco.front.models import *
 
 def home(request):
     #sections = Section.objects.all().order_by('sortnum')
-    return HttpResponse("hello world")#render_to_response('index.html', {"sections": sections})
+    urls = " "
+    for item in Item.objects.all():
+        urls += " <a href=\""+item.url()+"\">"+item.url()+"</a>"
+    return HttpResponse("list of urls:"+urls)#render_to_response('index.html', {"sections": sections})
+
+def item_page(request,item):
+    #sections = Section.objects.all().order_by('sortnum')
+    #return HttpResponse("item "+item)#render_to_response('index.html', {"sections": sections})
+    db_item = Item.objects.get(title=item.replace('_',' '))
+    return render_to_response('item.html', {'title': db_item.title,'body': db_item.body})
+
+def tage_page(request):
+    #sections = Section.objects.all().order_by('sortnum')
+    return HttpResponse("tag")#render_to_response('index.html', {"sections": sections})
